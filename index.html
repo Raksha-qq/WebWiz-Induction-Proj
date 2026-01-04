@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8" />
+     <title>My Art Gallery</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+     <!-- Tailwind Output CSS -->
+     <link href="./dist/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+     <!-- Sticky Navbar -->
+     <nav class="bg-gray-800 text-white sticky top-0 z-50 shadow">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+               <div class="flex items-center justify-between h-16">
+                    <!-- Logo / Brand -->
+                    <div class="flex-shrink-0">
+                         <a href="index.html" class="text-xl font-bold">RakshaArtzz</a>
+                    </div>
+
+                    <!-- Links -->
+                    <div class="hidden md:flex space-x-6">
+                         <a href="about.html" class="nav-link hover:text-yellow-400">About</a>
+                         <a href="contact.html" class="nav-link hover:text-yellow-400">Contact Us</a>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden">
+                         <button id="mobile-menu-button" class="focus:outline-none">
+                              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16" />
+                              </svg>
+                         </button>
+                    </div>
+               </div>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div id="mobile-menu" class="hidden md:hidden px-2 pt-2 pb-3 space-y-1 bg-gray-700">
+               <a href="about.html" class="nav-link block px-3 py-2 rounded hover:bg-gray-600">About</a>
+               <a href="contact.html" class="nav-link block px-3 py-2 rounded hover:bg-gray-600">Contact Us</a>
+          </div>
+     </nav>
+
+     <!-- Script for mobile menu toggle and active page highlight -->
+     <script>
+          const btn = document.getElementById('mobile-menu-button');
+          const menu = document.getElementById('mobile-menu');
+
+          btn.addEventListener('click', () => {
+               menu.classList.toggle('hidden');
+          });
+
+          // Highlight the active link
+          const links = document.querySelectorAll('.nav-link');
+          const currentPage = window.location.pathname.split("/").pop();
+
+          links.forEach(link => {
+               const linkPage = link.getAttribute('href');
+               if (linkPage === currentPage) {
+                    link.classList.add('text-yellow-400', 'font-semibold');
+               }
+          });
+     </script>
+
+
+     <!-- Header -->
+     <header class="py-10 text-center">
+          <h1 class="text-4xl font-bold mb-2">ArtWorks</h1>
+          <p class="text-gray-600">Tip: Click on the art to see relevant info</p>
+     </header>
+
+     <!-- Gallery Grid -->
+     <main class="max-w-6xl mx-auto px-6 pb-16">
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+
+               <!-- Artwork 1-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Fashion Illustration',
+                                        'Mixed Media',
+                                        'Crepe paper, Pearls, CDs',
+                                        'Fashion Illustration using mixed media materials to create texture and depth.',
+                                        './MyArt/3d dress.jpg'
+                                   )">
+                    <img src="./MyArt/3d dress.jpg" alt="Artwork 1">
+               </div>
+
+               <!-- Artwork 2 -->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Key to me dreams',
+                                        'Acrylic on Canvas',
+                                        'BLue, Black, Red, Yellow, White Acrylic paints',
+                                        'A representation of the key to my dreams',
+                                        './MyArt/KeyHole.jpg'
+                                   )">
+                    <img src="./MyArt/KeyHole.jpg" alt="Artwork 2">
+               </div>
+
+               <!-- Artwork 3 -->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Sea calm',
+                                        'Watercolor on Paper',
+                                        'Aquamarine, White, Black, Blue',
+                                        'Inspired by natural textures of the Sea.',
+                                        './MyArt/Dotted whale shark.jpg'
+                                   )">
+                    <img src="./MyArt/Dotted whale shark.jpg" alt="Artwork 3">
+               </div>
+               <!-- Artwork 4 -->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Floral Background',
+                                        'Watercolor on Paper',
+                                        'Yellow, Green, Pink',
+                                        'Inspired by nature\'s beauty',
+                                        './MyArt/floral background 3.jpg'
+                                   )">
+                    <img src="./MyArt/floral background 3.jpg" alt="Artwork 4">
+               </div>
+               <!-- Artwork 5 -->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Snowy Highway',
+                                        'Watercolor on Paper',
+                                        'Black, White, Grey, Blue',
+                                        'Winter chills',
+                                        './MyArt/snowy highway.jpg'
+                                   )">
+                    <img src="./MyArt/snowy highway.jpg" alt="Artwork 5">
+               </div>
+               <!-- Artwork 6 -->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Zentangle Art',
+                                        'Sketch Pen on Paper',
+                                        'Black fine tipped markers, B Pencil',
+                                        'Zentangled Girliee',
+                                        './MyArt/girl with dramatic hair.jpg'
+                                   )">
+                    <img src="./MyArt/girl with dramatic hair.jpg" alt="Artwork 6">
+               </div>
+               <!-- Artwork  7-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'In Love!',
+                                        'Oil Pastel on Paper',
+                                        'Pink, Black, Red, White Oil Pastels',
+                                        'Bringing love to life with colors!!',
+                                        './MyArt/3d Hearts.jpg'
+                                   )">
+                    <img src="./MyArt/3d Hearts.jpg" alt="Artwork 7">
+               </div>
+               <!-- Artwork  8-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Illusion',
+                                        'Sketch Pens on Paper',
+                                        'Black Sketch Pens, HB Pencil',
+                                        'Lost in the circles of Illusion',
+                                        './MyArt/3d Zentangle.jpg'
+                                   )">
+                    <img src="./MyArt/3d Zentangle.jpg" alt="Artwork 8">
+               </div>
+               <!-- Artwork  9-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                   'Watercolor Sketch',
+                                   'Watercolor on Paper',
+                                   'Black Sketch Pens, Blue, white, green Watercolors',
+                                   'Sketching over spilt paints?!',
+                                   './MyArt/abstract ink.jpg'
+                                   )">
+                    <img src="./MyArt/abstract ink.jpg" alt="Artwork 9">
+               </div>
+               <!-- Artwork  10-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Dancing the energy away',
+                                        'Acrylic on Canvas',
+                                        'Black, White, Pink, Acrylic paints',
+                                        'Dancing the energy away with glamour!!',
+                                        './MyArt/Acrylic Girl.jpg'
+                                   )">
+                    <img src="./MyArt/Acrylic Girl.jpg" alt="Artwork 10">
+               </div>
+               <!-- Artwork  11-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Still Life',
+                                        'Color Pencils on Paper',
+                                        'Black, White, Yellow, Green, Brown Color Pencils',
+                                        'Appreciating the beauty in still life',
+                                        './MyArt/Avocado.jpg'
+                                   )">
+                    <img src="./MyArt/Avocado.jpg" alt="Artwork 11">
+               </div>
+               <!-- Artwork  12-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Festive Still Life',
+                                        'Color Pencils on Paper',
+                                        'Black, White, Red Color Pencils',
+                                        'Observing the calm in festive chaos',
+                                        './MyArt/Candy Cane.jpg'
+                                   )">
+                    <img src="./MyArt/Candy Cane.jpg" alt="Artwork 12">
+               </div>
+               <!-- Artwork  13-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Tagline Art',
+                                        'Watercolors on Recycled Paper',
+                                        'Orange, Yellow, White, Red Watercolors',
+                                        'Styling Taglines',
+                                        './MyArt/color cloud with quote.jpg'
+                                   )">
+                    <img src="./MyArt/color cloud with quote.jpg" alt="Artwork 13">
+               </div>
+               <!-- Artwork  14-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Flamingos in Love',
+                                        'Acrylic on Canvas',
+                                        'Pink, Green, Yellow, White, Red Acrylic paints',
+                                        'Flamingos in Love',
+                                        './MyArt/flamingo.jpg'
+                                   )">
+                    <img src="./MyArt/flamingo.jpg" alt="Artwork 14">
+               </div>
+               <!-- Artwork  15-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'COVid Flashbacks',
+                                        'Watercolors on Paper',
+                                        'Blue, Red, White, Yellow, Black Watercolors',
+                                        'COVid Flashbacks',
+                                        './MyArt/Girl with mask.jpg'
+                                   )">
+                    <img src="./MyArt/Girl with mask.jpg" alt="Artwork 15">
+               </div>
+               <!-- Artwork  16-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Hazy Sunset',
+                                        'Oil Pastels on Paper',
+                                        'Orange, Black, Yellow, White, Red Oil Pastels',
+                                        'Hazy Sunset',
+                                        './MyArt/girl with lamp.jpg'
+                                   )">
+                    <img src="./MyArt/girl with lamp.jpg" alt="Artwork 16">
+               </div>
+               <!-- Artwork  17-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Roots of Ethnicity',
+                                        'Pencil Sketch on Paper',
+                                        'HB, 2B, 4B Pencils',
+                                        'Ethnicity posing with pride',
+                                        './MyArt/indian lady back pose.jpg'
+                                   )">
+                    <img src="./MyArt/indian lady back pose.jpg" alt="Artwork 17">
+               </div>
+               <!-- Artwork  18-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Good Luck, ft. Koi Fishes',
+                                        'Acrylic on Canvas',
+                                        'Green, Yellow, White, Black, Orange Acrylic paints',
+                                        'Good Luck, featuring Koi Fishes',
+                                        './MyArt/koi fish.jpg'
+                                   )">
+                    <img src="./MyArt/koi fish.jpg" alt="Artwork 18">
+               </div>
+               <!-- Artwork  19-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Netherlands Landscape',
+                                        'Watercolors on Paper',
+                                        'Green, Yellow, White, Black, Orange, Red Watercolor paints',
+                                        'A typical Netherlands town',
+                                        './MyArt/Netherlands Watercolor.jpg'
+                                   )">
+                    <img src="./MyArt/Netherlands Watercolor.jpg" alt="Artwork 19">
+               </div>
+               <!-- Artwork  20-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                                       'Your daily Inspiration',
+                                                       'Watercolors on Paper',
+                                                       'Green, Yellow, White, Black, Orange, Red Watercolor paints',
+                                                       'Daily Inspo',
+                                                       './MyArt/Watercolor quote bg.jpg'
+                                                  )">
+                    <img src="./MyArt/Watercolor quote bg.jpg" alt="Artwork 20">
+               </div>
+               <!-- Artwork  21-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Sea at Daybreak',
+                                        'Acrylic on Canvas',
+                                        'Blue, Yellow, White, Black, Acrylic paints',
+                                        'A typical Netherlands town',
+                                        './MyArt/ships at sea.jpg'
+                                   )">
+                    <img src="./MyArt/ships at sea.jpg" alt="Artwork 21">
+               </div>
+               <!-- Artwork  22-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Inspirational Polaroids',
+                                        'Watercolors on Paper',
+                                        'Green, Yellow, White, Black, Orange, Red Watercolor paints',
+                                        'Aesthetic Inspirational Polaroids',
+                                        './MyArt/polaroid with quotes.jpg'
+                                   )">
+                    <img src="./MyArt/polaroid with quotes.jpg" alt="Artwork 22">
+               </div>
+               <!-- Artwork  23-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'Doodles of the heart',
+                                        'Pen on Paper',
+                                        'Your average blue pen',
+                                        'Class-time doodles hit different!!',
+                                        './MyArt/pen heart.jpg'
+                                   )">
+                    <img src="./MyArt/pen heart.jpg" alt="Artwork 23">
+               </div>
+               <!-- Artwork  24-->
+               <div class="bg-gray-500 rounded-xl shadow-md overflow-hidden cursor-pointer hover:scale-105 transition flex flex-col"
+                    onclick="openModal(
+                                        'French Palace',
+                                        'Color Pencils on Paper',
+                                        'B, 2B, HB, 3H, 2H Pencils',
+                                        'A typical French palace setting',
+                                        './MyArt/palace.jpg'
+                                   )">
+                    <img src="./MyArt/palace.jpg" alt="Artwork 24">
+               </div>
+          </div>
+     </main>
+
+     <!-- Modal -->
+     <div id="modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+          <div class="bg-white rounded-xl max-w-2xl w-full mx-4 overflow-hidden relative">
+
+               <!-- Close button -->
+               <button onclick="closeModal()"
+                    class="absolute top-3 right-4 text-2xl font-bold text-gray-500 hover:text-black">
+                    &times;
+               </button>
+
+               <img id="modalImage" src="" class="w-full h-64 object-cover">
+
+               <div class="p-6">
+                    <h2 id="modalTitle" class="text-2xl font-bold mb-2"></h2>
+
+                    <p class="text-sm text-gray-600 mb-1">
+                         <span class="font-semibold">Medium:</span>
+                         <span id="modalMedium"></span>
+                    </p>
+
+                    <p class="text-sm text-gray-600 mb-3">
+                         <span class="font-semibold">Materials Used:</span>
+                         <span id="modalColors"></span>
+                    </p>
+
+                    <p id="modalDescription" class="text-gray-700"></p>
+               </div>
+          </div>
+     </div>
+
+     <!-- JavaScript -->
+     <script>
+          function openModal(title, medium, colors, description, image) {
+               document.getElementById("modal").classList.remove("hidden");
+               document.getElementById("modal").classList.add("flex");
+
+               document.getElementById("modalTitle").innerText = title;
+               document.getElementById("modalMedium").innerText = medium;
+               document.getElementById("modalColors").innerText = colors;
+               document.getElementById("modalDescription").innerText = description;
+               document.getElementById("modalImage").src = image;
+          }
+
+          function closeModal() {
+               document.getElementById("modal").classList.add("hidden");
+               document.getElementById("modal").classList.remove("flex");
+          }
+     </script>
+
+</body>
+
+</html>
